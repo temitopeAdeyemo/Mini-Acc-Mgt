@@ -6,22 +6,23 @@ import com.example.javalvl2.entity.Account;
 public class AccountMapper {
     public static Account mapToAccount(AccountDto accountDto){
 
-        Account account = new Account(
+        return new Account(
                 accountDto.getId(),
                 accountDto.getAccountHolderName(),
+                accountDto.getEmail(),
+                accountDto.getPhoneNumber(),
                 accountDto.getBalance()
         );
-
-        return account;
     };
 
     public static AccountDto mapToAccountDto(Account account){
-        AccountDto accountDto = new AccountDto(
+
+        return (AccountDto) new AccountDto(
                 account.getId(),
                 account.getAccountHolderName(),
+                account.getEmail(),
+                account.getPhoneNumber(),
                 account.getBalance()
         );
-
-        return accountDto;
     }
 }

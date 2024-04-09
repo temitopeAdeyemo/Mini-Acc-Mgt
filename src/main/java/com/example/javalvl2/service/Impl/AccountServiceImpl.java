@@ -3,6 +3,8 @@ package com.example.javalvl2.service.Impl;
 import com.example.javalvl2.dto.AccountDto;
 import com.example.javalvl2.entity.Account;
 import com.example.javalvl2.entity.mapper.AccountMapper;
+import com.example.javalvl2.exception.ApiNotFoundException;
+import com.example.javalvl2.exception.ApiRequestException;
 import com.example.javalvl2.repository.AccountRepository;
 import com.example.javalvl2.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDto getAccountById(Long id) {
-        Account account = accountRepository.findById(id).orElseThrow(()-> new RuntimeException("Account not found."));
+        Account account = accountRepository.findById(id).orElseThrow(()-> new ApiNotFoundException("Account not found."));
 
         return AccountMapper.mapToAccountDto(account);
     }
